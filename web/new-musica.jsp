@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<form name="form-new" enctype="multipart/form-data" method="post">
+<form name="form-new" method="post">
     <div class="form-group">
         <label>Nome</label>
         <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>

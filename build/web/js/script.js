@@ -24,12 +24,22 @@ function trigger(source, event) {
 }
 
 function recMusica() {
-    var form = new FormData($("form[name='form-new']")[0]);
-    console.log(form);
-    alert("OI");
+    var data = JSON.stringify({
+        nome: $("#nome").val(),
+        artista: $("#artista").val(),
+        estilo: $("#estilo").val(),
+        arquivo: $("#arquivo").val()
+    });
+
+    console.log(data);
+
     fetch("./proc-new-musica", {
+
         method: "POST",
-        body: form
+        body: data,
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
     }).then(function (resp) {
         return resp.text();
     }).then(function (resp) {
@@ -37,4 +47,3 @@ function recMusica() {
     }).then(trigger(null, "manage"));
 
 }
-;

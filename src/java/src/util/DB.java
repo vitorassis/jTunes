@@ -33,19 +33,20 @@ public class DB {
         }
     }
 
-    public void insert(Musica musica) {
+    public void insert(Musica musica) throws Exception{
         Statement stmt = null;
         try {
-            c.setAutoCommit(false);
-
             stmt = c.createStatement();
             String sql = "INSERT INTO musicas (nome, artista, estilo) VALUES("
                     + "'" + musica.getNome() + "', " + "'" + musica.getArtista() + "'" + ",'" + musica.getEstilo() + "')";
+            
+            System.out.println(sql);
+            
             stmt.executeUpdate(sql);
             stmt.close();
-            c.commit();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            throw new Exception(e.getMessage());
         }
         System.out.println("Records created successfully");
     }
@@ -75,7 +76,6 @@ public class DB {
         Statement stmt = null;
         try {
 
-            c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
@@ -83,7 +83,6 @@ public class DB {
                     + "estilo='" + musica.getEstilo() + "',"
                     + "artista='" + musica.getArtista() + "' WHERE id=" + musica.getId();
             stmt.executeUpdate(sql);
-            c.commit();
 
             stmt.close();
         } catch (Exception e) {
@@ -95,7 +94,6 @@ public class DB {
     public void delete(Musica musica) {
         Statement stmt = null;
         try {
-            c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
@@ -104,7 +102,6 @@ public class DB {
             c.commit();
 
             stmt.close();
-            c.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }

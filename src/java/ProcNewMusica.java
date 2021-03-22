@@ -33,21 +33,7 @@ public class ProcNewMusica extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        Musica musica = new Musica();
-        
-        if (!Musica.exists(request.getParameter("nome"), request.getParameter("artista"))) {
-            musica.setNome(request.getParameter("nome"));
-            musica.setArtista(request.getParameter("artista"));
-            musica.setEstilo(request.getParameter("estilo"));
-            PrintWriter out = response.getWriter();
-            if (musica.salvar()) {
-                out.print("Sucesso!");
-            } else {
-                out.print("Falha na gravação!");
-            }
-        }
+            throws ServletException, IOException {        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -76,7 +62,30 @@ public class ProcNewMusica extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        System.out.println(request.getParameter("nome"));
+        
+        String nome = request.getParameter("nome");
+        String artista = request.getParameter("artista");
+        String estilo = request.getParameter("estilo");
+        
+        Musica musica = new Musica();
+        
+        PrintWriter out = response.getWriter();
+            
+        if (!Musica.exists(nome, artista)) {
+            musica.setNome(nome);
+            musica.setArtista(artista);
+            musica.setEstilo(estilo);
+            
+            if (musica.salvar()) {
+                out.print("Sucesso!");
+            } else {
+                out.print("Falha na gravação!");
+            }
+        }else{
+            out.print("Música já cadastrada!");
+        }
     }
 
     /**
