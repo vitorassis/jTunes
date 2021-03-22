@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>jTunes</title>
+        <meta charset="UTF-8">
+        <link href="./photon-0.1.2-dist/css/photon.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="./js/script.js"></script>
+    </head>
+    <body>
+        <div class="window">
+            <header class="toolbar toolbar-header">
+                <h1 class="title">jTunes</h1>
+            </header>
+            <div class="window-content">
+                <div class="pane-group">
+                    <div class="pane-sm sidebar">
+                        <nav class="nav-group">
+                            <h5 class="nav-group-title">Ações</h5>
+                            <a class="nav-group-item" onclick="trigger(this, 'manage')">
+                                <span class="icon icon-pencil"></span>
+                                Gerenciar músicas
+                            </a>
+                            <h5 class="nav-group-title">Explorar</h5>
+                            <a class="nav-group-item" onclick="trigger(this, 'exp-music')">
+                                <span>
+                                    <span class="icon icon-music"></span>
+                                    Músicas
+                                </span>
+                            </a>
+                            <a class="nav-group-item" onclick="trigger(this, 'exp-artist')">
+                                <span>
+                                    <span class="icon icon-user"></span>
+                                    Artista
+                                </span>
+                            </a>
+                            <a class="nav-group-item" onclick="trigger(this, 'exp-style')">
+                                <span>
+                                    <span class="icon icon-cd"></span>
+                                    Estilo
+                                </span>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="pane">jTunes!</div>
+                </div>
+            </div>
+            <footer class="toolbar toolbar-footer">
+                <h1 class="title">COISAS DO PLAYER</h1>
+            </footer>
+        </div>
+    </body>
+</html>
